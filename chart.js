@@ -14,8 +14,8 @@ export default class Chart extends React.PureComponent {
     super(props);
     this.state = {
       selectedSlice: {
-        label: '',
-        value: 0
+        label: 'Twitter',
+        value: '55'
       },
       labelWidth: 0
     }
@@ -40,7 +40,7 @@ export default class Chart extends React.PureComponent {
     return (
       <View style={{ justifyContent: 'center',  flex: 1, height:40 }}>
         <PieChart
-          style={{ height: 200, marginLeft:150, marginRight: 10, marginBottom:165, marginTop: 50}}
+          style={{ height: 200, marginLeft:160, marginBottom:200}}
           outerRadius={'60%'}
           innerRadius={'30%'}
           data={data}
@@ -52,13 +52,13 @@ export default class Chart extends React.PureComponent {
           }}
           style={{
             position: 'absolute',
-            left: deviceWidth / 1.5 - labelWidth / 2.8,
+            left: deviceWidth / 1.4 - labelWidth / 2.8,
             textAlign:'center',
             fontSize:10,
-            top:-50,
+            top:-90,
             overflow:'hidden'
           }}>
-          {`${label} \n ${value}`}
+          {`${label}\n${value}`}
         </Text>
         
       </View>

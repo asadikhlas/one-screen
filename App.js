@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, WebView, Dimensions } from 'react-native'
-import { Container, Header, Content,Card, CardItem, Footer, FooterTab, Button, Icon, Body } from 'native-base';
+import { StyleSheet, Text, View, WebView, Dimensions, Image, Vibration } from 'react-native'
+import { Container, Header, Content, Card, CardItem, Footer, FooterTab, Button, Icon, Body } from 'native-base';
 import { Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import Chart from './chart'
-
 
 
 export default class App extends Component {
@@ -15,106 +14,128 @@ export default class App extends Component {
 
   }
 
-  // Later on in your component
-  async componentDidMount() {
-    await Font.loadAsync({
-      'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
-      'Roboto': require('native-base/Fonts/Roboto.ttf'),
-      ...Ionicons.font,
-    });
-  }
 
 
-  changeId = id => { 
-    this.setState({ 
+  changeId = id => {
+    this.setState({
       currentId: id
     })
   }
 
-  showVideo = () => { 
-    const {currentId} = this.state;
+  showVideo = (duration) => {
+    const { currentId } = this.state;
+    Vibration.vibrate(duration);
+    Vibration.cancel();
 
-    switch(currentId){ 
-      case 1: 
-        return "https://www.youtube.com/embed/MgaKDY1M4Pc"
+    switch (currentId) {
+      case 1:
+        return "https://www.youtube.com/embed/a3ICNMQW7Ok"
 
-      case 2: 
-        return "https://www.youtube.com/embed/Aznb7eemR_s"
+      case 2:
+        return "https://www.youtube.com/embed/xcJtL7QggTI"
 
-      default: 
-        return "https://www.youtube.com/embed/MgaKDY1M4Pc"
+      case 3:
+        return "https://www.youtube.com/embed/Bey4XXJAqS8"
+
+      case 4:
+        return "https://www.youtube.com/embed/S-thTTqefls"
+
+      case 5:
+        return "https://www.youtube.com/embed/E5ln4uR4TwQ"
+
+      case 6:
+        return "https://www.youtube.com/embed/tO01J-M3g0U"
+
+      case 7:
+        return "https://www.youtube.com/embed/K1_k03Gvd5g"
+
+      case 9:
+        return "https://www.youtube.com/embed/pSA0x4JIUJs"
+
+      case 10:
+        return "https://www.youtube.com/embed/S-thTTqefls"
+
+      default:
+        return "https://www.youtube.com/embed/Bey4XXJAqS8"
     }
   }
 
   render() {
-    console.log(this.state.currentId)
+
 
     const BUTTONS1 = [
       {
-        name: 'Beauty',
-        iconName: 'apps',
+        name: 'Auto Beauty',
+        url: 'https://image.flaticon.com/icons/png/512/38/38964.png',
         id: 1
       },
 
       {
-        name: 'Camera',
-        iconName: 'camera',
+        name: 'LIquify',
+        url: 'http://www.sclance.com/pngs/cursor-icon-png/cursor_icon_png_356270.png',
         id: 2
       },
 
 
       {
-        name: 'Navigate',
-        iconName: 'navigate',
+        name: 'Facelift',
+        url: 'https://cdn1.iconfinder.com/data/icons/surgery/450/facelift-512.png',
         id: 3
       },
 
       {
-        name: 'Contact',
-        iconName: 'person',
+        name: 'Bigger Eyes',
+        url: 'https://cdn2.iconfinder.com/data/icons/emoticons-hand-drawn/80/Big_Mischievous_Eyes-512.png',
+
         id: 4
       },
       {
-        name: 'ETC',
-        iconName: 'arrow-dropleft',
+        name: 'Dark Circles',
+        url: 'https://cdn2.iconfinder.com/data/icons/natural-beauty/100/dark_circles-512.png',
         id: 5
       },
     ]
 
-
     const BUTTONS2 = [
       {
-        name: 'Apps',
-        iconName: 'apps',
+        name: 'Smile',
+        url: 'http://simpleicon.com/wp-content/uploads/smile.png',
         id: 6
       },
 
       {
-        name: 'Camera',
-        iconName: 'camera',
+        name: 'Softening',
+        url: 'https://www.pngrepo.com/png/75742/170/emoticon-face-with-the-mouth-at-one-side-like-a-small-smile-in-a-rounded-square.png',
         id: 7
       },
 
 
       {
-        name: 'Navigate',
-        iconName: 'navigate',
+        name: 'Whitening',
+        url: 'https://png.pngtree.com/svg/20161020/5101007c9d.png',
         id: 8
       },
 
       {
-        name: 'Contact',
-        iconName: 'person',
+        name: 'Blemishe',
+        url: 'https://static.thenounproject.com/png/944433-200.png',
+
         id: 9
       },
       {
-        name: 'ETC',
-        iconName: 'arrow-dropleft',
+        name: 'Small Nose',
+        url: 'https://cdn.iconscout.com/icon/premium/png-256-thumb/itchy-nose-777715.png',
         id: 10
       },
     ]
 
-    const screenWidth = Math.round(Dimensions.get('window').width);
+
+
+
+
+    const DURATION = 10000;
+
+
 
     return (
       <Container style={styles.container}>
@@ -126,34 +147,66 @@ export default class App extends Component {
         </Header>
 
         <Content>
-       
+
           <View>
-          <Card style={{marginRight:230, marginLeft:40, marginTop:35}}>
-            <CardItem>
-                <Text>
-                   User
+            <Card style={{ marginRight: 200, marginLeft: 25, marginTop: 10 }}>
+              <CardItem>
+                <Text style={{ fontSize: 10, fontWeight: 'bold' }}>
+                  3:00PM - 5:00PM
                 </Text>
-            </CardItem>
-          </Card>
-          <Card style={{marginRight:230, marginLeft:40,}}>
-            <CardItem>
-                <Text>
-                   User
+
+              </CardItem>
+              <CardItem style={{ marginTop: -20, backgroundColor: 'transparent' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
+                  John Key
                 </Text>
-            </CardItem>
-          </Card>
+
+              </CardItem>
+
+
+              <CardItem style={{ marginTop: -20, backgroundColor: 'transparent' }}>
+                <Text style={{ fontSize: 10, fontWeight: '500', color: 'lightgrey' }}>
+                  With Judy Brown
+                </Text>
+
+              </CardItem>
+            </Card>
+
+            <Card style={{ marginRight: 200, marginLeft: 25, marginTop: 5 }}>
+              <CardItem>
+                <Text style={{ fontSize: 10, fontWeight: 'bold' }}>
+                  3:00PM - 5:00PM
+                </Text>
+
+              </CardItem>
+              <CardItem style={{ marginTop: -20, backgroundColor: 'transparent' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
+                  John Key
+                </Text>
+
+              </CardItem>
+
+
+              <CardItem style={{ marginTop: -20, backgroundColor: 'transparent' }}>
+                <Text style={{ fontSize: 10, fontWeight: '500', color: 'lightgrey' }}>
+                  With Judy Brown
+                </Text>
+
+              </CardItem>
+            </Card>
             <Chart />
           </View>
 
 
+          <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }}>
+            <WebView
+              style={{ height: 180, marginRight: 5, marginLeft: 5 }}
+              javaScriptEnabled={true}
+              domStorageEnabled={true}
+              source={{ uri: this.showVideo(DURATION) }}
+            />
 
-          <WebView
-            style={{ width: screenWidth, height: 180}}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
-            source={{ uri: this.showVideo() }}
-          />
-
+          </View>
         </Content>
 
 
@@ -162,10 +215,11 @@ export default class App extends Component {
             <FooterTab style={{ backgroundColor: 'white' }}>
 
 
-              {BUTTONS1.map(item => ( 
-                <Button vertical key = {item.id} onPress = {() => this.changeId(item.id)}>
-                  <Icon name = {item.iconName}/>
-                  <Text>{item.name}</Text>
+              {BUTTONS1.map(item => (
+                <Button vertical key={item.id} onPress={() => this.changeId(item.id)}>
+                  <Image style={{ width: 21, height: 21 }} source={{ uri: item.url }} />
+
+                  <Text style={{ fontSize: 12, marginTop: 8 }}>{item.name}</Text>
                 </Button>
               ))}
 
@@ -177,10 +231,11 @@ export default class App extends Component {
 
 
 
-            {BUTTONS2.map(item => ( 
-                <Button vertical key = {item.id} onPress = {() => this.changeId(item.id)}>
-                  <Icon name = {item.iconName}/>
-                  <Text>{item.name}</Text>
+              {BUTTONS2.map(item => (
+                <Button vertical key={item.id} onPress={() => this.changeId(item.id)}>
+                  <Image style={{ width: 21, height: 21 }} source={{ uri: item.url }} />
+
+                  <Text style={{ fontSize: 12, marginTop: 8 }}>{item.name}</Text>
                 </Button>
               ))}
 
@@ -204,8 +259,6 @@ const styles = StyleSheet.create({
   chart: {
     height: 100,
     width: 100,
-
-
   },
 
   footer: {

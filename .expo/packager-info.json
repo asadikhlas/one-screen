@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": "https://v5-4pu.asadikhlas.react-native-ui.exp.direct",
-  "packagerNgrokUrl": "https://packager.v5-4pu.asadikhlas.react-native-ui.exp.direct",
-  "ngrokPid": 7436
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
