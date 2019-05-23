@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, WebView, Dimensions } from 'react-native'
-import { Container, Header, Content,Card, CardItem, Footer, FooterTab, Button, Icon, Body } from 'native-base';
+import { StyleSheet, Text, View, WebView, Dimensions, Image } from 'react-native'
+import { Container, Header, Content, Card, CardItem, Footer, FooterTab, Button, Icon, Body } from 'native-base';
 import { Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import Chart from './chart'
-
 
 
 export default class App extends Component {
@@ -25,23 +24,23 @@ export default class App extends Component {
   }
 
 
-  changeId = id => { 
-    this.setState({ 
+  changeId = id => {
+    this.setState({
       currentId: id
     })
   }
 
-  showVideo = () => { 
-    const {currentId} = this.state;
+  showVideo = () => {
+    const { currentId } = this.state;
 
-    switch(currentId){ 
-      case 1: 
+    switch (currentId) {
+      case 1:
         return "https://www.youtube.com/embed/MgaKDY1M4Pc"
 
-      case 2: 
+      case 2:
         return "https://www.youtube.com/embed/Aznb7eemR_s"
 
-      default: 
+      default:
         return "https://www.youtube.com/embed/MgaKDY1M4Pc"
     }
   }
@@ -85,34 +84,38 @@ export default class App extends Component {
     const BUTTONS2 = [
       {
         name: 'Apps',
-        iconName: 'apps',
+        url: 'https://img.icons8.com/material/4ac144/256/twitter.png',
         id: 6
       },
 
       {
         name: 'Camera',
-        iconName: 'camera',
+        url: './assets/unt.png',
         id: 7
       },
 
 
       {
         name: 'Navigate',
-        iconName: 'navigate',
+        url: './assets/unt.png',
+
         id: 8
       },
 
       {
         name: 'Contact',
-        iconName: 'person',
+        url: './assets/unt.png',
+
         id: 9
       },
       {
         name: 'ETC',
-        iconName: 'arrow-dropleft',
+        url: './assets/unt.png',
         id: 10
       },
     ]
+
+    const url = './assets/unt.png'
 
     const screenWidth = Math.round(Dimensions.get('window').width);
 
@@ -126,34 +129,36 @@ export default class App extends Component {
         </Header>
 
         <Content>
-       
+
           <View>
-          <Card style={{marginRight:230, marginLeft:40, marginTop:35}}>
-            <CardItem>
+            <Card style={{ marginRight: 230, marginLeft: 40, marginTop: 35 }}>
+              <CardItem>
                 <Text>
-                   User
+                  User
                 </Text>
-            </CardItem>
-          </Card>
-          <Card style={{marginRight:230, marginLeft:40,}}>
-            <CardItem>
+              </CardItem>
+            </Card>
+            <Card style={{ marginRight: 230, marginLeft: 40, }}>
+              <CardItem>
                 <Text>
-                   User
+                  Users
                 </Text>
-            </CardItem>
-          </Card>
+
+              </CardItem>
+            </Card>
             <Chart />
           </View>
 
 
+          <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }}>
+            <WebView
+              style={{ height: 180, marginTop: 5, marginRight: 5, marginLeft: 5 }}
+              javaScriptEnabled={true}
+              domStorageEnabled={true}
+              source={{ uri: this.showVideo() }}
+            />
 
-          <WebView
-            style={{ width: screenWidth, height: 180}}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
-            source={{ uri: this.showVideo() }}
-          />
-
+          </View>
         </Content>
 
 
@@ -162,9 +167,9 @@ export default class App extends Component {
             <FooterTab style={{ backgroundColor: 'white' }}>
 
 
-              {BUTTONS1.map(item => ( 
-                <Button vertical key = {item.id} onPress = {() => this.changeId(item.id)}>
-                  <Icon name = {item.iconName}/>
+              {BUTTONS1.map(item => (
+                <Button vertical key={item.id} onPress={() => this.changeId(item.id)}>
+                  <Icon name={item.iconName} />
                   <Text>{item.name}</Text>
                 </Button>
               ))}
@@ -177,9 +182,10 @@ export default class App extends Component {
 
 
 
-            {BUTTONS2.map(item => ( 
-                <Button vertical key = {item.id} onPress = {() => this.changeId(item.id)}>
-                  <Icon name = {item.iconName}/>
+              {BUTTONS2.map(item => (
+                <Button vertical key={item.id} onPress={() => this.changeId(item.id)}>
+                  <Image style={{width: 28, height: 28}} source={{uri: item.url}} />
+
                   <Text>{item.name}</Text>
                 </Button>
               ))}
@@ -204,8 +210,6 @@ const styles = StyleSheet.create({
   chart: {
     height: 100,
     width: 100,
-
-
   },
 
   footer: {

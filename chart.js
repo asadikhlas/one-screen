@@ -15,7 +15,7 @@ export default class Chart extends React.PureComponent {
     this.state = {
       selectedSlice: {
         label: '',
-        value: 0
+        value: 'google'
       },
       labelWidth: 0
     }
