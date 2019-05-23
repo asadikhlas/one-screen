@@ -4,6 +4,12 @@
     "slug": "react-native-ui",
     "privacy": "public",
     "sdkVersion": "32.0.0",
+    "ios": {
+      "bundleIdentifier": "com.one.onescreen"
+    },
+    "android": {
+      "package": "com.one.onescreen"
+    },
     "platforms": [
       "ios",
       "android"
@@ -21,9 +27,6 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    }
+    ]
   }
 }
