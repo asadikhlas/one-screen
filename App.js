@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, WebView, Dimensions, Image, Vibration } from 'react-native'
+import { StyleSheet, Text, View, WebView, Image, Vibration, TouchableNativeFeedback } from 'react-native'
 import { Container, Header, Content, Card, CardItem, Footer, FooterTab, Button, Icon, Body } from 'native-base';
-import { Font } from 'expo';
-import { Ionicons } from '@expo/vector-icons';
+import ChartBar from './barChart';
 import Chart from './chart'
 
 
@@ -22,10 +21,8 @@ export default class App extends Component {
     })
   }
 
-  showVideo = (duration) => {
+  showVideo = () => {
     const { currentId } = this.state;
-    Vibration.vibrate(duration);
-    Vibration.cancel();
 
     switch (currentId) {
       case 1:
@@ -98,7 +95,7 @@ export default class App extends Component {
 
     const BUTTONS2 = [
       {
-        name: 'Smile',
+        name: 'Smiling',
         url: 'http://simpleicon.com/wp-content/uploads/smile.png',
         id: 6
       },
@@ -133,7 +130,6 @@ export default class App extends Component {
 
 
 
-    const DURATION = 10000;
 
 
 
@@ -195,15 +191,16 @@ export default class App extends Component {
               </CardItem>
             </Card>
             <Chart />
+            <ChartBar />
           </View>
 
 
           <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }}>
             <WebView
-              style={{ height: 180, marginRight: 5, marginLeft: 5 }}
+              style={{ height: 210, marginHorizontal:5, marginTop:25 }}
               javaScriptEnabled={true}
               domStorageEnabled={true}
-              source={{ uri: this.showVideo(DURATION) }}
+              source={{ uri: this.showVideo() }}
             />
 
           </View>
@@ -216,11 +213,18 @@ export default class App extends Component {
 
 
               {BUTTONS1.map(item => (
-                <Button vertical key={item.id} onPress={() => this.changeId(item.id)}>
-                  <Image style={{ width: 21, height: 21 }} source={{ uri: item.url }} />
+                <TouchableNativeFeedback  key={item.id} onPress={() => this.changeId(item.id)}>
+                <View style = {{display: 'flex', alignItems: 'center', marginHorizontal: 10}}>
+                  <View>
+                    <Image style={{ width: 21, height: 21,}} source={{ uri: item.url }} />
+                  </View>
 
-                  <Text style={{ fontSize: 12, marginTop: 8 }}>{item.name}</Text>
-                </Button>
+
+                  <View>
+                    <Text style={{ fontSize: 12, marginTop: 8,}}>{item.name}</Text>
+                  </View>
+                </View>
+              </TouchableNativeFeedback>
               ))}
 
             </FooterTab>
@@ -232,11 +236,18 @@ export default class App extends Component {
 
 
               {BUTTONS2.map(item => (
-                <Button vertical key={item.id} onPress={() => this.changeId(item.id)}>
-                  <Image style={{ width: 21, height: 21 }} source={{ uri: item.url }} />
+                <TouchableNativeFeedback  key={item.id} onPress={() => this.changeId(item.id)}>
+                  <View style = {{display: 'flex', alignItems: 'center', marginHorizontal: 10}}>
+                    <View>
+                      <Image style={{ width: 21, height: 21, marginHorizontal: 10}} source={{ uri: item.url }} />
+                    </View>
 
-                  <Text style={{ fontSize: 12, marginTop: 8 }}>{item.name}</Text>
-                </Button>
+
+                    <View>
+                      <Text style={{ fontSize: 12, marginTop: 8,}}>{item.name}</Text>
+                    </View>
+                  </View>
+                </TouchableNativeFeedback>
               ))}
 
             </FooterTab>

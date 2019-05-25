@@ -40,7 +40,7 @@ export default class Chart extends React.PureComponent {
     return (
       <View style={{ justifyContent: 'center',  flex: 1, height:40 }}>
         <PieChart
-          style={{ height: 200, marginLeft:160, marginBottom:200}}
+          style={{ height: 180, marginLeft:160, marginBottom:260}}
           outerRadius={'60%'}
           innerRadius={'30%'}
           data={data}
@@ -55,7 +55,7 @@ export default class Chart extends React.PureComponent {
             left: deviceWidth / 1.4 - labelWidth / 2.8,
             textAlign:'center',
             fontSize:10,
-            top:-90,
+            top:-120,
             overflow:'hidden'
           }}>
           {`${label}\n${value}`}
